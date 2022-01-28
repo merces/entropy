@@ -53,14 +53,14 @@ int main(int argc, char *argv[])
         f.seekg(0, ios::beg);
         
         // Read file contents
-        vector<unsigned char> data(len);
-        f.read((char*) &data[0], len);
+        vector<char> buff(len);
+        f.read(&buff[0], len);
         f.close();
 
         // Count occurrence of each possible byte, from zero to 255.
         unsigned int counted_bytes[256] = { 0 };
         for (int j = 0; j < len; j++) {
-            unsigned char c = data[j];
+            unsigned char c = buff[j];
             counted_bytes[c]++;
         }
 
