@@ -12,7 +12,7 @@ any file with entropy `greater than 7.0` is likely compressed, encrypted, or pac
 
 ## Download
 
-Windows releases will be available soon. For Linux and macOS see the [Build](#Build) section.
+Windows releases will be available soon. For Linux and macOS see the [Building](#Building) section.
 
 ## Usage
 
