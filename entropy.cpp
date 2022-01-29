@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 
-double calculate_entropy(const unsigned int counted_bytes[256], const size_t total_length) {
+double calculate_entropy(const unsigned int counted_bytes[256], const std::streamsize total_length) {
     double entropy = 0.;
 
     for (int i = 0; i < 256; i++) {
@@ -19,7 +19,10 @@ double calculate_entropy(const unsigned int counted_bytes[256], const size_t tot
 }
 
 void usage() {
-    std::cout << "Usage:\n\tentropy FILE\n";
+    std::cout << "entropy calculates the entropy of files, but you need to provide it with a file. :)\n\n" <<
+        "Usage:\n\tentropy FILE\n\n" <<
+        "Examples:\n\tentropy image.png\n\tentropy music.mp3 document.xls\n\tentropy *.exe\n\n" <<
+        "For more information and bug reporting, refer to https://github.com/merces/entropy\n";
 }
 
 int main(int argc, char *argv[])
