@@ -1,11 +1,8 @@
 ﻿#include <iostream>
-#include <cstdint>
 #include <cmath>
 #include <filesystem>
 #include <fstream>
 #include <vector>
-
-using namespace std;
 
 double calculate_entropy(const unsigned int counted_bytes[256], const size_t total_length) {
     double entropy = 0.;
@@ -22,7 +19,7 @@ double calculate_entropy(const unsigned int counted_bytes[256], const size_t tot
 }
 
 void usage() {
-    cout << "Usage:\n\tentropy FILE\n";
+    std::cout << "Usage:\n\tentropy FILE\n";
 }
 
 int main(int argc, char *argv[])
@@ -32,39 +29,42 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    cout << fixed << std::setprecision(2);
+    std::cout << std::fixed << std::setprecision(2);
 
     for (int i = 1; i < argc; i++) {
         // Skip directories, symlinks, etc
-        if (!filesystem::is_regular_file(argv[i])) {
+        if (!std::filesystem::is_regular_file(argv[i])) {
             continue;
         }
 
         // Open the file
-        ifstream f(argv[i], ios::binary);
+        std::ifstream f(argv[i], std::ios::binary);
         if (f.fail()) {
-            cerr << "Could not open \"" << argv[i] << "\" for reading.\n";
+            std::cerr << "Could not open \"" << argv[i] << "\" for reading.\n";
             continue;
         }
 
-        // Get file size
-        f.seekg(0, ios::end);
-        streampos len = f.tellg();
-        f.seekg(0, ios::beg);
-        
-        // Read file contents
-        vector<char> buff(len);
-        f.read(&buff[0], len);
-        f.close();
+        // 16KB chunks
+        std::vector<char> buff(1024*16, 0);
+        std::streamsize total = 0;
 
         // Count occurrence of each possible byte, from zero to 255.
         unsigned int counted_bytes[256] = { 0 };
-        for (int j = 0; j < len; j++) {
-            unsigned char c = buff[j];
-            counted_bytes[c]++;
+
+        // Read file in chunks and count the occurrences of each possible byte (0-255)
+        while (!f.eof()) {
+            f.read(buff.data(), buff.size());
+            auto s = f.gcount();
+            total += s;
+
+            for (int j = 0; j < s; j++) {
+                unsigned char c = buff[j];
+                counted_bytes[c]++;
+            }
         }
 
-        cout << calculate_entropy(counted_bytes, len) << " " << argv[i] << "\n";
+        f.close();
+        std::cout << calculate_entropy(counted_bytes, total) << " " << argv[i] << "\n";
     }
 	return 0;
 }
