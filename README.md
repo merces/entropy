@@ -10,9 +10,16 @@ The closer to `8.00`, the more random is an input file.
 As compression and encryption algorithms output usually consists of high entropy data, one can say
 any file with entropy `greater than 7.0` is likely compressed, encrypted, or packed (in case of executables).
 
+I needed a fast way to calculate the entropy for a couple of files at once in Windows, so I ended up coding
+this tool, which also supports Linux and macOS.
+
 ## Download
 
-Windows releases will be available soon. For Linux and macOS see the [Building](#Building) section.
+Windows releases are available [here](https://github.com/merces/entropy/releases). In order to run them, 
+you need the latest [Microsoft Visual C++ Redistributable](docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
+installed.
+
+For Linux and macOS see the [Building](#Building) section.
 
 ## Usage
 
@@ -44,14 +51,14 @@ Clone the repo:
     $ git clone https://github.com/merces/entropy.git
     $ cd entropy
     
-If you have CMake installed:
+If you have CMake installed, build with:
     
     $ mkdir build
     $ cd build
     $ cmake ..
     $ make
     
-Or if you don't:
+Or if you don't, just used `g++`:
 
     $ g++ -o entropy entropy.cpp
     
@@ -59,4 +66,3 @@ Or if you don't:
 
 If you use a recent Visual Studio version, you can clone this repository and open the `CMakeLists.txt` here
 with `File -> Open -> CMake...`. Then, select a configuration that suits your needs and build.
-  
