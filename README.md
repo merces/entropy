@@ -58,9 +58,9 @@ If you have CMake installed, build with:
     $ cmake ..
     $ make
     
-Or if you don't, just used `g++`:
+Or if you don't, just use `g++`:
 
-    $ g++ -o entropy entropy.cpp
+    $ g++ -std=c++20 -o entropy entropy.cpp
     
 ### Windows
 
