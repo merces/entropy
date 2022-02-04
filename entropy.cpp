@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Entropy will have two decimal places
     std::cout << std::fixed << std::setprecision(2);
 
     for (int i = 1; i < argc; i++) {
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
 
         // 16KB chunks
         std::vector<char> buff(1024*16, 0);
-        std::streamsize total = 0;
+        std::streamsize total_bytes_read = 0;
 
         // Count occurrence of each possible byte, from zero to 255.
         unsigned int counted_bytes[256] = { 0 };
@@ -57,17 +58,17 @@ int main(int argc, char *argv[])
         // Read file in chunks and count the occurrences of each possible byte (0-255)
         while (!f.eof()) {
             f.read(buff.data(), buff.size());
-            auto s = f.gcount();
-            total += s;
+            auto bytes_read = f.gcount();
+            total_bytes_read += bytes_read;
 
-            for (int j = 0; j < s; j++) {
+            for (int j = 0; j < bytes_read; j++) {
                 unsigned char c = buff[j];
                 counted_bytes[c]++;
             }
         }
 
         f.close();
-        std::cout << calculate_entropy(counted_bytes, total) << " " << argv[i] << "\n";
+        std::cout << calculate_entropy(counted_bytes, total_bytes_read) << " " << argv[i] << "\n";
     }
 	return 0;
 }
