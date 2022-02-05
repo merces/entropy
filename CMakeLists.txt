@@ -3,11 +3,11 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("entropy")
+project (entropy VERSION 0.0.2)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-add_executable (entropy "entropy.cpp"  )
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable (entropy entropy.cpp)
 
 if (WIN32)
 	set_target_properties(entropy PROPERTIES LINK_FLAGS "/link setargv.obj")
