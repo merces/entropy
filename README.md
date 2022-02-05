@@ -66,3 +66,19 @@ Or if you don't, just use `g++`:
 
 If you use a recent Visual Studio version, you can clone this repository and open the `CMakeLists.txt` here
 with `File -> Open -> CMake...`. Then, select a configuration that suits your needs and build.
+
+## Similar Work
+
+I am aware of the following tools that achieve similar results:
+
+| Name                                                                        | Comments                                                                |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [DensityScout](https://cert.at/en/downloads/software/software-densityscout) | Uses a different algorithm the author called density.                   |
+| [Detect It Easy](https://github.com/horsicq/Detect-It-Easy)                 | Shows a nice graph. Do many other great things. CLI version included.   |
+| [entropy](https://github.com/dirtbags/fluffy/blob/master/entropy.c)         | From Fluffy Suite. Fast. Supports one file at time.                     |
+| [Ent](https://gynvael.coldwind.pl/?id=158)                                  | Different algorithm, one file at a time. Windows only. Creates a graph. |
+| [ent](https://www.fourmilab.ch/random/)                                     | Gives more information. Process one file at a time.                     |
+| [rahash2](https://www.radare.org/n/radare2.html)                            | From radare2 framework. `rahash2 -a entropy` does the job.              |
+| [rz-hash](https://rizin.re)                                                 | From Rizin framework. `rz-hash -a entropy` does the job.                |
+
+
