@@ -4,7 +4,7 @@
 
 ## Why
 
-The [entropy of a file](https://kennethghartman.com/calculate-file-entropy/) tells us how random this file is.
+The [entropy of a file](https://kennethghartman.com/blog/calculate-file-entropy/) tells us how random this file is.
 The closer to `8.00`, the more random is an input file.
 
 As compression and encryption algorithms output usually consists of high entropy data, one can say
