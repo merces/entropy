@@ -25,20 +25,20 @@ For Linux and macOS see the [Building](#Building) section.
 Calculating the entropy of a single file:
 
 ```bash
-    $ ./entropy /bin/ls
-    5.85 /bin/ls
+$ ./entropy /bin/ls
+5.85 /bin/ls
 ```
 
 Shell expansion is supported too:
 
 ```powershell
-    PS C:\> .\entropy.exe C:\Users\User\Downloads\*
-    7.92 C:\Users\User\Downloads\1.jpeg
-    8.00 C:\Users\User\Downloads\setup.exe
-    7.58 C:\Users\User\Downloads\nov.pptx
-    4.66 C:\Users\User\Downloads\data.bin
-    7.99 C:\Users\User\Downloads\pic.png
-    4.07 C:\Users\User\Downloads\budget.xls
+PS C:\> .\entropy.exe C:\Users\User\Downloads\*
+7.92 C:\Users\User\Downloads\1.jpeg
+8.00 C:\Users\User\Downloads\setup.exe
+7.58 C:\Users\User\Downloads\nov.pptx
+4.66 C:\Users\User\Downloads\data.bin
+7.99 C:\Users\User\Downloads\pic.png
+4.07 C:\Users\User\Downloads\budget.xls
 ```
 
 From the above output one could say `/bin/ls` is not packed, `1.jpeg` uses compression,
@@ -52,21 +52,20 @@ ZIP files indeed), `data.bin` is not compressed, etc. Is that garuanteed? No, it
 Clone the repo:
 
 ```bash
-    $ git clone https://github.com/merces/entropy.git
-    $ cd entropy
-    
+$ git clone https://github.com/merces/entropy.git
+$ cd entropy
+
 If you have CMake installed, build with:
-    
-    $ mkdir build
-    $ cd build
-    $ cmake ..
-    $ make
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
 ```
 
 Or if you don't, just use `g++`:
 
 ```bash
-    $ g++ -std=c++20 -o entropy entropy.cpp
+$ g++ -std=c++20 -o entropy entropy.cpp
 ```
 
 ### Windows
