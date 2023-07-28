@@ -19,7 +19,7 @@ double calculate_entropy(const std::vector<int> counted_bytes, const std::stream
 }
 
 void usage() {
-    std::cout << "entropy calculates the entropy of files, but you need to provide it with at least one file. :)\n\n"
+    std::cout << "entropy v1.1 calculates the entropy of files, but you need to provide it with at least one file. :)\n\n"
         "Usage:\n\tentropy FILE\n\n"
         "Examples:\n\tentropy image.png\n\tentropy music.mp3 document.xls\n\tentropy *.exe\n\n"
         "For more information and bug reports, refer to https://github.com/merces/entropy\n";
