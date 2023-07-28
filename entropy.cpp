@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
         // Open the file
         std::ifstream input_file(argv[i], std::ios::binary);
         if (input_file.fail()) {
-            std::cerr << "Couldn't open \"" << argv[1] << "\" for reading." << std::endl;
+            std::cerr << "Couldn't open \"" << argv[i] << "\" for reading." << std::endl;
             continue;
         }
 
