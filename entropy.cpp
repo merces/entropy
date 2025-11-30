@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 
-double calculate_entropy(const std::vector<int> counted_bytes, const std::streamsize total_length) {
+double calculate_entropy(const std::vector<uint64_t> counted_bytes, const std::streamsize total_length) {
     double entropy = 0.;
     double temp;
 
@@ -35,13 +35,13 @@ int main(int argc, char *argv[])
     // Entropy value will use two decimal places
     std::cout << std::fixed << std::setprecision(2);
 
-    // 16KB chunks
-    std::vector<char> buff(1024*16, 0);
+    // 1M chunks
+    std::vector<char> buff(1024*1024, 0);
     std::streamsize total_bytes_read;
     std::streamsize bytes_read;
 
     // This vector will hold how many times every possible byte value occurs
-    std::vector<int> counted_bytes(256);
+    std::vector<uint64_t> counted_bytes(256);
 
     for (int i = 1; i < argc; i++) {
         // Skip directories, symlinks, etc
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             bytes_read = input_file.gcount();
             total_bytes_read += bytes_read;
 
-            for (int j = 0; j < bytes_read; j++) {
+            for (std::streamsize j = 0; j < bytes_read; j++) {
                 const unsigned char count = static_cast<unsigned char> (buff[j]);
                 counted_bytes[count]++;
             }
